@@ -14,6 +14,16 @@ export default {
         gray: "#4F4F4F",
         "light-gray": "#F6F8FB",
         "very-light-gray": "#BDBDBD",
+        "loader-bg": "#F2F2F2",
+      },
+      keyframes: {
+        side: {
+          "0, 100%": { width: "0%" },
+          "100%": { width: "100%" },
+        },
+      },
+      animation: {
+        side: "side 2s linear infinite",
       },
     },
   },
