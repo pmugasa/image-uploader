@@ -6,7 +6,7 @@ function Loader() {
           Uploading...
         </h3>
         <div className="w-[340px] h-[6px] rounded-[8px] mt-[31px] bg-loader-bg">
-          <div className="bg-accent h-[6px] w-[100px] rounded-[8px] animate-side"></div>
+          <div className="bg-accent h-[6px] w-[4px] rounded-[8px] animate-side"></div>
         </div>
       </div>
     </div>

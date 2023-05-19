@@ -1,24 +1,9 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 
-function DragandDrop({ onUpload, setError, upload }) {
+function DragandDrop({ onUpload, setError }) {
   const [dragging, setDragging] = useState(false);
 
   const formats = ["jpeg", "webp", "svg", "png"];
-
-  const drop = useRef(null);
-  useEffect(() => {
-    //adding events to the drop
-    drop.current.addEventListener("dragover", handleDragOver);
-    drop.current.addEventListener("drop", handleDrop);
-    drop.current.addEventListener("dragenter", handleDragEnter);
-    drop.current.addEventListener("dragleave", handleDragLeave);
-    return () => {
-      drop.current.removeEventListener("dragover", handleDragOver);
-      drop.current.removeEventListener("drop", handleDrop);
-      drop.current.removeEventListener("dragenter", handleDragEnter);
-      drop.current.removeEventListener("dragleave", handleDragLeave);
-    };
-  }, []);
 
   function handleDragOver(e) {
     e.preventDefault();
@@ -60,8 +45,6 @@ function DragandDrop({ onUpload, setError, upload }) {
     //if it passses all the above
     if (images && images.length) {
       onUpload(images);
-    } else {
-      onUpload(upload);
     }
   }
 
@@ -81,7 +64,11 @@ function DragandDrop({ onUpload, setError, upload }) {
   return (
     <>
       <div
-        ref={drop}
+        onDrop={(e) => handleDrop(e)}
+        onDragEnter={(e) => handleDragEnter(e)}
+        onDragLeave={(e) => handleDragLeave(e)}
+        onDragOver={handleDragOver}
+        //ref={drop}
         className={
           dragging
             ? "mx-auto w-[22rem] h-[14rem] bg-blue-100 mt-4 rounded-xl border-solid border-2 border-grayish-blue flex flex-col items-center justify-center"
