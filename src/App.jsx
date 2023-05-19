@@ -3,9 +3,10 @@ import Card from "./components/Card";
 import DragandDrop from "./components/DragandDrop";
 import Button from "./components/Button";
 import Loader from "./components/Loader";
+import Success from "./pages/Success";
 
 function App() {
-  const [isUploading, setIsUploading] = useState(false);
+  const [isUploading, setIsUploading] = useState(true);
   const [error, setError] = useState("");
   const formats = ["jpeg", "webp", "svg", "png"];
 
@@ -34,15 +35,11 @@ function App() {
     post();
   }
   if (isUploading) {
-    return (
-      <div className="h-screen w-screen flex items-center justify-center">
-        <Loader />
-      </div>
-    );
+    return <Success />;
   } else {
     return (
       <>
-        <div className="h-screen w-screen flex items-center justify-center">
+        <div className="h-screen w-screen flex flex-col items-center justify-center">
           <Card>
             <h3 className="text-center mt-9 font-sans text-base font-medium text-gray">
               Upload your image
@@ -51,7 +48,7 @@ function App() {
               File should be Jpeg, Png...
             </p>
             {error ? (
-              <p className="text-[12px] text-red-500 text-center font-sans mt-2">
+              <p className="text-[10px] text-red-500 font-sans font-light p-4 mt-4 border border-red-400 bg-red-200 w-full rounded-sm h-10 flex items-center justify-center">
                 {error}
               </p>
             ) : null}
@@ -70,6 +67,9 @@ function App() {
               Choose file
             </Button>
           </Card>
+          <footer className="mt-4 font-sans font-medium text-gray text-lg">
+            Made by Pete✌🏾
+          </footer>
         </div>
       </>
     );
