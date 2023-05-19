@@ -2,6 +2,8 @@ import { useRef, useEffect, useState } from "react";
 
 function App() {
   const [upload, setUpload] = useState("");
+
+  const formats = ["jpeg", "webp", "svg", "png"];
   console.log(upload);
 
   const drop = useRef(null);
@@ -24,9 +26,33 @@ function App() {
     e.preventDefault();
     e.stopPropagation();
 
-    //check if drop contains files
-    const { images } = e.dataTransfer;
+    //convert file list to an array
+    const images = [...e.dataTransfer.files];
+    console.log("images", images);
 
+    //check if the number of images is less than
+    if (images.length > 1) {
+      console.log(`Only 1 image can be uploaded at a time`);
+      return;
+    }
+
+    //check if uploaded image is not one  of the  allowed formats
+    if (
+      formats &&
+      images.some(
+        (img) =>
+          !formats.some((format) =>
+            img.name.toLowerCase().endsWith(format.toLowerCase())
+          )
+      )
+    ) {
+      console.log(
+        `Only following file formats are acceptable: ${formats.join(",")}`
+      );
+      return;
+    }
+
+    //if it passses all the above
     if (images && images.length) {
       onUpload(images);
     } else {
