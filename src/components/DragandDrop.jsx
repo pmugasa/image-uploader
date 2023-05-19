@@ -1,9 +1,7 @@
 import { useState } from "react";
 
-function DragandDrop({ onUpload, setError }) {
+function DragandDrop({ onUpload, setError, formats }) {
   const [dragging, setDragging] = useState(false);
-
-  const formats = ["jpeg", "webp", "svg", "png"];
 
   function handleDragOver(e) {
     e.preventDefault();
@@ -16,7 +14,6 @@ function DragandDrop({ onUpload, setError }) {
 
     //convert file list to an array
     const images = [...e.dataTransfer.files];
-    console.log("images", images);
 
     //check if the number of images is less than
     if (images.length > 1) {
@@ -36,7 +33,7 @@ function DragandDrop({ onUpload, setError }) {
       )
     ) {
       setError(
-        `Only following file formats are acceptable: ${formats.join(",")}`
+        `Only following file formats are acceptable: ${formats.join(", ")}`
       );
 
       return;
@@ -64,9 +61,9 @@ function DragandDrop({ onUpload, setError }) {
   return (
     <>
       <div
-        onDrop={(e) => handleDrop(e)}
-        onDragEnter={(e) => handleDragEnter(e)}
-        onDragLeave={(e) => handleDragLeave(e)}
+        onDrop={handleDrop}
+        onDragEnter={handleDragEnter}
+        onDragLeave={handleDragLeave}
         onDragOver={handleDragOver}
         //ref={drop}
         className={

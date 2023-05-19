@@ -7,6 +7,7 @@ import Loader from "./components/Loader";
 function App() {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState("");
+  const formats = ["jpeg", "webp", "svg", "png"];
 
   //handling errors
   useEffect(() => {
@@ -26,9 +27,9 @@ function App() {
     const post = () => {
       setTimeout(function () {
         console.log("posting to server...", image);
-        console.log("is uploading", isUploading);
+
         setIsUploading(false);
-      }, 2000);
+      }, 3000);
     };
     post();
   }
@@ -50,7 +51,7 @@ function App() {
               File should be Jpeg, Png...
             </p>
             {error ? (
-              <p className="text-sm text-red-500 text-center font-sans mt-2">
+              <p className="text-[12px] text-red-500 text-center font-sans mt-2">
                 {error}
               </p>
             ) : null}
@@ -59,12 +60,15 @@ function App() {
               onUpload={onUpload}
               setError={setError}
               setIsUploading={setIsUploading}
+              formats={formats}
             />
 
             <div className="text-center text-very-light-gray font-sans text-[12px] font-medium mt-9">
               Or
             </div>
-            <Button onUpload={onUpload}>Choose file</Button>
+            <Button onUpload={onUpload} formats={formats} setError={setError}>
+              Choose file
+            </Button>
           </Card>
         </div>
       </>
