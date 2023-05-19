@@ -1,6 +1,6 @@
 function Loader() {
   return (
-    <div className="flex items-center justify-center">
+    <div className="w-screen h-screen flex items-center justify-center">
       <div className="h-[9rem] w-[24rem] rounded-xl bg-white shadow drop-shadow-xl px-[32px]">
         <h3 className=" mt-[36px] font-sans text-base font-medium text-gray">
           Uploading...

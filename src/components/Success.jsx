@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Card from "../components/Card";
+import Card from "./Card";
 
 function Success() {
   const [copiedText, setCopiedText] = useState("");
@@ -52,12 +52,12 @@ function Success() {
           </p>
         ) : null}
         <div className="w-full mt-[25px] h-[34px] border border-very-light-gray bg-light-gray px-2 rounded-[8px] flex items-center justify-start relative">
-          <p className="text-[#4F4F4F] truncate font-sans font-medium text-[8px] w-[240px]">
+          <p className="text-[#4F4F4F] truncate font-sans font-medium text-[8px] w-[235px]">
             {link}
           </p>
           <button
             onClick={copyToClipboard}
-            className=" absolute z-10 top-[1px] right-0 shadow drop-shadow-sm  px-6 py-2 bg-accent hover:opacity-70 rounded-[8px] text-primary text-[8px]  font-sans"
+            className=" absolute z-10 top-[2px] right-[2px] shadow drop-shadow-sm  px-6 py-2 bg-accent hover:opacity-70 rounded-[8px] text-primary text-[8px]  font-sans"
           >
             Copy Link
           </button>

@@ -3,19 +3,20 @@ import Card from "./components/Card";
 import DragandDrop from "./components/DragandDrop";
 import Button from "./components/Button";
 import Loader from "./components/Loader";
-import Success from "./pages/Success";
+import Success from "./components/Success";
 
 function App() {
-  const [isUploading, setIsUploading] = useState(true);
+  const [isUploading, setIsUploading] = useState(false);
+  const [isUploaded, setIsUploaded] = useState(false);
   const [error, setError] = useState("");
-  const formats = ["jpeg", "webp", "svg", "png"];
+  const formats = ["jpg", "webp", "svg", "png"];
 
   //handling errors
   useEffect(() => {
     if (error) {
       const timeoutId = setTimeout(() => {
         setError("");
-      }, 3000);
+      }, 2000);
 
       return () => {
         clearTimeout(timeoutId);
@@ -30,11 +31,14 @@ function App() {
         console.log("posting to server...", image);
 
         setIsUploading(false);
+        setIsUploaded(true);
       }, 3000);
     };
     post();
   }
   if (isUploading) {
+    return <Loader />;
+  } else if (isUploaded) {
     return <Success />;
   } else {
     return (
