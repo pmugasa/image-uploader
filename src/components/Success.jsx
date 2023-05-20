@@ -21,7 +21,7 @@ function Success({ imgLink }) {
     navigator.clipboard.writeText(link);
     setCopiedText(link);
   }
-  console.log("copied", copiedText);
+
   return (
     <div className="flex items-center justify-center h-screen w-screen">
       <Card>
@@ -51,7 +51,7 @@ function Success({ imgLink }) {
           </p>
         ) : null}
         <div className="w-full mt-[25px] h-[34px] border border-very-light-gray bg-light-gray px-2 rounded-[8px] flex items-center justify-start relative">
-          <p className="text-[#4F4F4F] truncate font-sans font-medium text-[8px] w-[235px]">
+          <p className="text-[#4F4F4F] truncate font-sans font-medium text-[8px] w-[235px] overflow-hidden">
             {link}
           </p>
           <button
