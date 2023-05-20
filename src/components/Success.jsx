@@ -40,7 +40,7 @@ function Success({ imgLink }) {
         </h3>
         <div className="  mt-[25px]">
           <img
-            src={"http://localhost:3001/" + imgLink}
+            src={imgLink}
             alt="uploaded_image"
             className="object-cover w-[338px] h-[224px]  rounded-[12px]"
           />

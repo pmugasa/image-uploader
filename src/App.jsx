@@ -31,15 +31,11 @@ function App() {
     try {
       const formData = new FormData();
       formData.append("file", image[0]);
-      const response = await axios.post(
-        "http://localhost:3001/images",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post("/images", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       setTimeout(function () {
         console.log("posting to server...", image[0]);
         setImgLink(response.data.path);
