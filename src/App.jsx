@@ -9,7 +9,7 @@ import axios from "axios";
 function App() {
   const [isUploading, setIsUploading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
-  const [imgLink, setImgLink] = useState("");
+  const [image, setImage] = useState({});
   const [error, setError] = useState("");
   const formats = ["jpg", "webp", "svg", "png"];
 
@@ -36,8 +36,8 @@ function App() {
           "Content-Type": "multipart/form-data",
         },
       });
-
-      setImgLink(response.data.path);
+      console.log("response data", response.data);
+      setImage(response.data);
       setIsUploading(false);
       setIsUploaded(true);
     } catch (error) {
@@ -50,7 +50,7 @@ function App() {
   if (isUploading) {
     return <Loader />;
   } else if (isUploaded) {
-    return <Success imgLink={imgLink} />;
+    return <Success image={image} />;
   } else {
     return (
       <>
