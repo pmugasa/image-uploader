@@ -3,7 +3,7 @@ import Card from "./Card";
 
 function Success({ imgLink }) {
   const [copiedText, setCopiedText] = useState("");
-  const link = "http://localhost:3001/" + imgLink;
+  const link = imgLink;
 
   //handling successful copy
   useEffect(() => {
