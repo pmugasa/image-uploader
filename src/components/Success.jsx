@@ -3,7 +3,7 @@ import Card from "./Card";
 
 function Success({ image }) {
   const [copiedText, setCopiedText] = useState("");
-  const link = "/" + image._id;
+  const link = `/images/${image._id}`;
 
   //handling successful copy
   useEffect(() => {
@@ -40,7 +40,7 @@ function Success({ image }) {
         </h3>
         <div className="  mt-[25px]">
           <img
-            src={image.path}
+            src={`/${image.path}`}
             alt="uploaded_image"
             className="object-cover w-[338px] h-[224px]  rounded-[12px]"
           />
