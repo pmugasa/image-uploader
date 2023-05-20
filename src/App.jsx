@@ -36,12 +36,10 @@ function App() {
           "Content-Type": "multipart/form-data",
         },
       });
-      setTimeout(function () {
-        console.log("posting to server...", image[0]);
-        setImgLink(response.data.path);
-        setIsUploading(false);
-        setIsUploaded(true);
-      }, 2000);
+
+      setImgLink(response.data.path);
+      setIsUploading(false);
+      setIsUploaded(true);
     } catch (error) {
       setIsUploaded(false);
       setIsUploading(false);
