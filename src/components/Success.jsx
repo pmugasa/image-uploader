@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
 
-function Success() {
+function Success({ imgLink }) {
   const [copiedText, setCopiedText] = useState("");
-  const link =
-    "http://localhost:5731/photo-231235465866+4lsdas6jdsfakdhakadhfakdfakjhjewoppgnalv";
+  const link = "http://localhost:3001/" + imgLink;
 
   //handling successful copy
   useEffect(() => {
@@ -39,11 +38,11 @@ function Success() {
         <h3 className="text-center mt-[11px] font-sans text-base font-medium text-gray">
           Upload your image
         </h3>
-        <div className="w-[338px] h-[224px]   mt-[25px]">
+        <div className="  mt-[25px]">
           <img
-            src="/man.jpg"
+            src={"http://localhost:3001/" + imgLink}
             alt="uploaded_image"
-            className="object-cover rounded-[12px]"
+            className="object-cover w-[338px] h-[224px]  rounded-[12px]"
           />
         </div>
         {copiedText ? (

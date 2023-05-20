@@ -9,7 +9,7 @@ import axios from "axios";
 function App() {
   const [isUploading, setIsUploading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
-
+  const [imgLink, setImgLink] = useState("");
   const [error, setError] = useState("");
   const formats = ["jpg", "webp", "svg", "png"];
 
@@ -40,29 +40,23 @@ function App() {
           },
         }
       );
-
-      setIsUploading(false);
-      setIsUploaded(true);
+      setTimeout(function () {
+        console.log("posting to server...", image[0]);
+        setImgLink(response.data.path);
+        setIsUploading(false);
+        setIsUploaded(true);
+      }, 2000);
     } catch (error) {
       setIsUploaded(false);
       setIsUploading(false);
       setError("Error uploading file." + " " + error.message);
     }
-    /*const post = () => {
-      setTimeout(function () {
-        console.log("posting to server...", image[0]);
-
-        setIsUploading(false);
-        setIsUploaded(true);
-      }, 3000);
-    };
-    post();*/
   }
 
   if (isUploading) {
     return <Loader />;
   } else if (isUploaded) {
-    return <Success />;
+    return <Success imgLink={imgLink} />;
   } else {
     return (
       <>
