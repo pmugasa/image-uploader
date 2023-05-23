@@ -36,7 +36,7 @@ function Success({ image }) {
           </svg>
         </div>
         <h3 className="text-center mt-[11px] font-sans text-base font-medium text-gray">
-          Upload your image
+          Uploaded Successfully!
         </h3>
         <div className="  mt-[25px]">
           <img
@@ -52,7 +52,7 @@ function Success({ image }) {
         ) : null}
         <div className="w-full mt-[25px] h-[34px] border border-very-light-gray bg-light-gray px-2 rounded-[8px] flex items-center justify-start relative">
           <p className="text-[#4F4F4F] truncate font-sans font-medium text-[8px] w-[235px] overflow-hidden">
-            {link}
+            {`/${link}`}
           </p>
           <button
             onClick={copyToClipboard}
